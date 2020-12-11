@@ -1,6 +1,7 @@
 
 ####Libraries used###
 library(tidyverse)
+library(ggplot2)
 library(janitor)
 
 ### Path for Box Titanic Data ###
@@ -9,6 +10,8 @@ library(janitor)
 titanic <- "Box/Center for Student Analytics/The Data Scouts/Titanic Project/train.csv"
 pattern <- "(?<=(C[:][/])(User[s]{0,1})[/].{0,20}[/])(.*)(\\w+)"
 my_home <- stringr::str_replace(path.expand("~"), pattern, titanic)
+
+train <- rio::import(my_home)
 
 ### Each person's "pullin in" code###
 #train <- rio::import("/Users/erik/Box/Center for Student Analytics/The Data Scouts/Titanic Project/train.csv")
@@ -24,4 +27,5 @@ tabyl(train,Sex)
 #class
 tabyl(train,Pclass)
 
-path.expand('~')
+# Hayden's graph, comparing age to fare by gender
+ggplot(train, aes(x=Age, y=Fare, colour=Sex)) + geom_point(size=3)
