@@ -29,3 +29,7 @@ tabyl(train,Pclass)
 
 # Hayden's graph, comparing age to fare by gender
 ggplot(train, aes(x=Age, y=Fare, colour=Sex)) + geom_point(size=3)
+
+# Austin's graph, 
+ggplot(train, aes(x=Cabin, y=Survived,)) + geom_point(size=3)
+
